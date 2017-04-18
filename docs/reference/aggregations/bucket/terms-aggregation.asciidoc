@@ -55,12 +55,10 @@ change this default behaviour by setting the `size` parameter.
 
 ==== Size
 
-The `size` parameter can be set to define how many term buckets should be returned out of the overall terms list. By
-default, the node coordinating the search process will request each shard to provide its own top `size` term buckets
-and once all shards respond, it will reduce the results to the final list that will then be returned to the client.
-This means that if the number of unique terms is greater than `size`, the returned list is slightly off and not accurate
-(it could be that the term counts are slightly off and it could even be that a term that should have been in the top
-size buckets was not returned).
+`Size` 파라미터는 얼마나 많은 term bucket 들이 나와야하는지를 정한다. 기본값으로, 검색 과정의 노드는 각각의 샤드에 top `size` term bucket들을 요청한다.
+모든 샤드가 응답하게 되면, 노드는 결과값을 reduce하여 최종의 결과 리스트를 생성하고, 그 결과를 클라이언트에 보내게된다.
+따라서, 만약 unique term의 숫자가 `size`보다 크다면 결과값은 약간 사라지고 정확하지 않다. (term의 개수가 약간 사라질 수 있으며, 
+top size bucket에 있어야할 term이 return 되지 않을 수도 있다.)
 
 [[search-aggregations-bucket-terms-aggregation-approximate-counts]]
 ==== Document counts are approximate
